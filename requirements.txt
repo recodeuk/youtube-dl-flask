@@ -1,0 +1,4 @@
+flask
+youtube-dl
+bs4
+pprint
