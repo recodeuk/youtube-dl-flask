@@ -52,7 +52,6 @@ def dl_queue_list():
 def server_static(filename):
     return app.send_static_file(filename)
 
-
 @app.route('/youtube-dl/q', methods=['GET'])
 def q_size():
     content = {"success": True, "size": json.dumps(list(dl_q.queue))}
