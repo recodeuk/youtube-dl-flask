@@ -12,7 +12,7 @@
 	{% for i in button_code %}
 		var myFunction{{ i[0] }} = function () {
                  var Url = window.location;
-                 fetch(Url["origin"] + "/youtube-dl/q",{body:new URLSearchParams({url:"{{ i[1] }}",format:"{{ i[2] }}"}),method:"POST"});};
+                 fetch(Url["origin"] + "/youtube-dl/q",{body:new URLSearchParams({url:"{{ i[1] }}",format:"{{ i[2] }}"}),method:"POST"}).then(function(response){console.log(response)})};
 
     {% endfor %}
 
