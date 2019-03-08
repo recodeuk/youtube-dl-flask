@@ -71,8 +71,14 @@ def q_put():
         return jsonify(content)
     dl_q.put((url, options))
     print("Added url " + url + " to the download queue")
-    content = {"success": True, "url": url, "options": options}
-    return jsonify(content)
+
+#    content = {"success": True, "url": url, "options": options}
+#    return content
+    return jsonify(
+        success = True,
+        url = url,
+        options = options
+    )
 
 
 @app.route('/youtube-dl/search', methods=['GET'])
