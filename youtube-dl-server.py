@@ -67,11 +67,12 @@ def q_put():
     }
 
     if not url:
-        return {"success": False, "error": "/q called without a 'url' query param"}
-
+        content = {"success": False, "error": "/q called without a 'url' query param"}
+        return jsonify(content)
     dl_q.put((url, options))
     print("Added url " + url + " to the download queue")
-    return {"success": True, "url": url, "options": options}
+    content = {"success": True, "url": url, "options": options}
+    return jsonify(content)
 
 
 @app.route('/youtube-dl/search', methods=['GET'])
