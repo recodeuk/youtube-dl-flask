@@ -68,7 +68,6 @@ def server_static(filename):
 
 @app.route('/youtube-dl/q', methods=['GET'])
 def q_size():
-
     return jsonify(
         success = True,
         size = list(dl_q.queue)
