@@ -32,9 +32,11 @@
 
 	};
 
+
 	{% for i in button_code %}
 		var myFunction{{ i[0] }} = function () {
                  var Url = window.location;
+
                  fetch(Url["origin"] + "/youtube-dl/q",{body:new URLSearchParams({url:"{{ i[1] }}",format:"{{ i[2] }}"}),method:"POST"}).then(dataWrappedByPromise => dataWrappedByPromise.json()).then(data => {
 	console.log(data);
 	if (data.success != true){var type = 'warning'};
@@ -46,6 +48,7 @@
 	</script>
 </head>
 <body>
+
 
 <div class="container">
     <br>
@@ -64,5 +67,7 @@
 	    {% endfor %}
 	    </div>
 	</div>
+
 </div>
 </body>
+
