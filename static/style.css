@@ -9,3 +9,12 @@ body {
 div.input-group>select.custom-select {
   flex: 0.1 1 100px;
 }
+
+[data-notify="progressbar"] {
+	margin-bottom: 0px;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 90%;
+	height: 5px;
+	}

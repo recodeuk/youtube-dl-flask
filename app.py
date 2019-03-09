@@ -3,7 +3,7 @@ import json
 import os
 import subprocess
 from queue import Queue
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, redirect, url_for
 from threading import Thread
 import youtube_dl
 from pathlib import Path
@@ -43,6 +43,20 @@ def grab_title(id):
     except:
         return('channel')
 
+def grab_title_url(id):
+    id = id[32:]
+    try:
+        params = {"format": "json", "url": "https://www.youtube.com/watch?v={}".format(id)}
+        url = "https://www.youtube.com/oembed"
+        query_string = urllib.parse.urlencode(params)
+        url = url + "?" + query_string
+        with urllib.request.urlopen(url) as response:
+            response_text = response.read()
+            data = json.loads(response_text.decode())
+            return(data['title'])
+    except:
+        return('channel')
+
 @app.route('/youtube-dl')
 def dl_queue_list():
     return render_template('index.html')
@@ -54,36 +68,47 @@ def server_static(filename):
 
 @app.route('/youtube-dl/q', methods=['GET'])
 def q_size():
-    content = {"success": True, "size": json.dumps(list(dl_q.queue))}
-    return jsonify(content)
+#    content = {"success": True, "size": json.dumps(list(dl_q.queue))}
+#    return jsonify(content)
+    return jsonify(
+        success = True,
+        size = list(dl_q.queue)
+    )
 
 
 @app.route('/youtube-dl/q', methods=['POST'])
 def q_put():
-    url = request.form["url"]
+    url = request.form["url"].strip('\"')
     options = {
-        'format': request.form["format"]
+        'format': request.form["format"].strip('\"')
     }
 
     if not url:
         content = {"success": False, "error": "/q called without a 'url' query param"}
         return jsonify(content)
     dl_q.put((url, options))
-    print("Added url " + url + " to the download queue")
-
+    print("Added url " + url + " to the download queue" )
+    title = grab_title_url(url)
+    print(url)
 #    content = {"success": True, "url": url, "options": options}
 #    return content
     return jsonify(
         success = True,
         url = url,
-        options = options
+        options = options['format'],
+        title = title
     )
 
 
 @app.route('/youtube-dl/search', methods=['GET'])
 def yt_search_page():
-    content = {"success": True, "size": json.dumps(list(dl_q.queue))}
-    return jsonify(content)
+#    content = {"success": True, "size": json.dumps(list(dl_q.queue))}
+#    return jsonify(content)
+#    return jsonify(
+#        success = True,
+#        size = list(dl_q.queue)
+#    )
+    return redirect(url_for('dl_queue_list'))
 
 @app.route('/youtube-dl/search', methods=['POST'])
 def yt_search():
