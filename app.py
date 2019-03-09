@@ -68,8 +68,7 @@ def server_static(filename):
 
 @app.route('/youtube-dl/q', methods=['GET'])
 def q_size():
-#    content = {"success": True, "size": json.dumps(list(dl_q.queue))}
-#    return jsonify(content)
+
     return jsonify(
         success = True,
         size = list(dl_q.queue)
@@ -90,8 +89,6 @@ def q_put():
     print("Added url " + url + " to the download queue" )
     title = grab_title_url(url)
     print(url)
-#    content = {"success": True, "url": url, "options": options}
-#    return content
     return jsonify(
         success = True,
         url = url,
@@ -102,12 +99,7 @@ def q_put():
 
 @app.route('/youtube-dl/search', methods=['GET'])
 def yt_search_page():
-#    content = {"success": True, "size": json.dumps(list(dl_q.queue))}
-#    return jsonify(content)
-#    return jsonify(
-#        success = True,
-#        size = list(dl_q.queue)
-#    )
+
     return redirect(url_for('dl_queue_list'))
 
 @app.route('/youtube-dl/search', methods=['POST'])
