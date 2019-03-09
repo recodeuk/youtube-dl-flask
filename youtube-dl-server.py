@@ -15,7 +15,7 @@ import pprint
 import urllib
 import json
 
-app = Flask(__name__,static_url_path='')
+app = Flask(__name__,static_url_path='/youtube-dl')
 
 
 app_defaults = {
