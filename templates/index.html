@@ -25,6 +25,7 @@
           other supported site</a>. The server will automatically download the highest quality version available.</p>
       <hr class="my-4">
       <div>
+          <h2>Enter URL</h2>
         <form action="/youtube-dl/q" method="POST">
           <div class="input-group">
             <input name="url" type="url" class="form-control" placeholder="URL" aria-label="URL" aria-describedby="button-submit">
@@ -53,9 +54,10 @@
               <button class="btn btn-primary" type="submit" id="button-submit">Submit</button>
             </div>
           </div>
-          </div>
         </form>
+        </div>
         <br>
+        <h2>Search YouTube (Remember to choose format)</h2>
         <form action="/youtube-dl/search" method="POST">
           <div class="input-group">
             <input name="search" type="search" class="form-control" placeholder="Search" aria-label="search" aria-describedby="button-submit">
