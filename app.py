@@ -109,7 +109,10 @@ def q_put_h():
         return render_template('added.html', status = "Failed",info = "Due to : no URL")
     dl_q.put((url, options))
     print("Added url " + url + " to the download queue" )
-    title = grab_title_url(url)
+    try:
+        title = grab_title_url(url)
+    except:
+        title = "Video"
     return render_template('added.html', status = "Success",info = title + " Added to Queue")
 
 
