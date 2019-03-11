@@ -1,5 +1,8 @@
 <head>  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"> 
+    
     <script src="{{ url_for('static', filename='countdown.js') }}"></script>
     <script type="text/javascript">
       // Total seconds to wait
@@ -13,7 +16,7 @@
               window.location = Url["origin"] + "/youtube-dl" ;
           } else {
               // Update remaining seconds
-              document.getElementById("countdown").innerHTML = seconds;
+              document.getElementById("countdown-number").innerHTML = seconds;
               // Count down using javascript
               window.setTimeout("countdown()", 1000);
           }
