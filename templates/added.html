@@ -4,29 +4,6 @@
     crossorigin="anonymous">
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"> 
     
-
-    <script type="text/javascript">
-      // Total seconds to wait
-      var seconds = 10;
-      
-      function countdown() {
-          seconds = seconds - 1;
-          if (seconds < 0) {
-              var Url = window.location;
-              // Redirection link 
-              window.location = Url["origin"] + "/youtube-dl" ;
-          } else {
-              // Update remaining seconds
-              document.getElementById("countdown-number").innerHTML = seconds;
-              // Count down using javascript
-              window.setTimeout("countdown()", 1000);
-          }
-      }
-      
-      // Run countdown function
-      countdown();
-      
-  </script>
 </head>
 
 <body>
@@ -45,3 +22,4 @@
     </div>
   </div>
 </body>
+<script src="{{ url_for('static', filename='countdown.js') }}"></script>
