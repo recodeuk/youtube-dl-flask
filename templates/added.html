@@ -27,8 +27,12 @@
 
 <body>
   <div class="container d-flex flex-column text-light text-center">
-    <h1 class="display-4">{{ status|safe }}</h1>
-    <h2 class="display-4">{{ info|safe }}</h2>
+    <div class="flex-grow-1"></div>
+      <div class="jumbotron bg-transparent flex-grow-1">
+        <h1 class="display-4">{{ status|safe }}</h1>
+        <h2 class="display-4">{{ info|safe }}</h2>
+      </div>
+    </div>
   </div>
 </body>
   <div id="countdown">
