@@ -1,0 +1,40 @@
+<head>
+  
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"> 
+    <script src="{{ url_for('static', filename='countdown.js') }}"></script>
+    <script type="text/javascript">
+
+      // Total seconds to wait
+      var seconds = 10;
+      
+      function countdown() {
+          seconds = seconds - 1;
+          if (seconds < 0) {
+              var Url = window.location;
+              // Redirection link 
+              window.location = Url["origin"] + "/youtube-dl" ;
+          } else {
+              // Update remaining seconds
+              document.getElementById("countdown").innerHTML = seconds;
+              // Count down using javascript
+              window.setTimeout("countdown()", 1000);
+          }
+      }
+      
+      // Run countdown function
+      countdown();
+      
+  </script>
+    </head>
+<!--
+  <body>
+    <h1 class="display-4">{{ status }}</h1>
+    <h2 class="display-4">{{ info }}</h2>
+  </body>
+-->
+  <div id="countdown">
+    <div id="countdown-number"></div>
+    <svg>
+      <circle r="18" cx="20" cy="20"></circle>
+    </svg>
+  </div>

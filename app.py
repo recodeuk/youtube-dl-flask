@@ -95,6 +95,23 @@ def q_put():
         options = options['format'],
         title = title
     )
+@app.route('/youtube-dl/qh', methods=['GET'])
+def q_size_h():
+    return redirect(url_for('dl_queue_list'))
+
+@app.route('/youtube-dl/qh', methods=['POST'])
+def q_put_h():
+    url = request.form["url"].strip('\"')
+    options = {
+        'format': request.form["format"].strip('\"')
+    }
+    if not url:
+        return render_template('added.html', status = "Failed",info = "Due to : no URL")
+    dl_q.put((url, options))
+    print("Added url " + url + " to the download queue" )
+    title = grab_title_url(url)
+    return render_template('added.html', status = "Success",info = title + " Added to Queue")
+
 
 
 @app.route('/youtube-dl/search', methods=['GET'])
