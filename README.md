@@ -6,7 +6,7 @@
 This fork also builds upon the current infrastructure to provide an experience where the user can search youtube and view the thumbnail & title and choose to download a video.
 
 
-# youtube-dl-server
+# youtube-dl-flask
 
 Very spartan Web and REST interface for downloading youtube videos onto a server. [`flask`](https://github.com/pallets/flask) + [`youtube-dl`](https://github.com/rg3/youtube-dl).
 
