@@ -10,7 +10,7 @@ This fork also builds upon the current infrastructure to provide an experience w
 
 Very spartan Web and REST interface for downloading youtube videos onto a server. [`flask`](https://github.com/pallets/flask) + [`youtube-dl`](https://github.com/rg3/youtube-dl).
 
-![screenshot][1]
+![screenshot][youtube-dl-flask.png]
 
 ## Running
 
