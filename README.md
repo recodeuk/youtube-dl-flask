@@ -1,12 +1,12 @@
 ![Docker Stars Shield](https://img.shields.io/docker/stars/recodeuk/youtube-dl-flask.svg?style=flat-square)
 ![Docker Pulls Shield](https://img.shields.io/docker/pulls/recodeuk/youtube-dl-flask.svg?style=flat-square)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/manbearwiz/youtube-dl-server/master/LICENSE)
+
 
 # TL;DR Why choose this 
 This fork also builds upon the current infrastructure to provide an experience where the user can search youtube and view the thumbnail & title and choose to download a video.
 
 
-# youtube-dl-flask
+# youtube-downloader-flask
 
 Very spartan Web and REST interface for downloading youtube videos onto a server. [`flask`](https://github.com/pallets/flask) + [`youtube-dl`](https://github.com/rg3/youtube-dl).
 
